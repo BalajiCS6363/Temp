@@ -1,0 +1,34 @@
+name: CI/CD Pipeline for textGit
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js (Optional)
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install Dependencies (Optional)
+        run: |
+          npm install  # Remove if not needed
+
+      - name: Build Project (if applicable)
+        run: |
+          npm run build  # Modify based on your project
+
+      - name: Deploy (Optional)
+        run: |
+          echo "Deployment step here"  # Modify this for actual deployment
